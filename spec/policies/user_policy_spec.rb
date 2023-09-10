@@ -16,6 +16,10 @@ RSpec.describe UserPolicy, type: :policy do
       it { expect(policy).to permit(user, create(:user)) }
     end
 
+    describe 'when user is itself' do
+      it { expect(policy).to permit(user, user) }
+    end
+
     describe 'when with tomato application' do
       let(:application) { Doorkeeper::Application.create(name: 'Tomato', scopes: 'tomato') }
 

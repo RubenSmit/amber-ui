@@ -18,7 +18,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    scope.exists?(id: record.id)
+    me? || scope.exists?(id: record.id)
   end
 
   def update?
